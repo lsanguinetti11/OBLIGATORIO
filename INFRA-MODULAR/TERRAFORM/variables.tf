@@ -1,43 +1,49 @@
+##############################################
+# VARIABLES GLOBALES DEL PROYECTO
+##############################################
 
+variable "project" {
+  description = "Nombre del proyecto (prefijo para recursos)"
+  type        = string
+  default     = "ecommerce-php"
+}
+
+variable "aws_region" {
+  description = "Región de AWS donde se desplegará la infraestructura"
+  type        = string
+  default     = "us-east-1"
+}
+
+##############################################
+# VARIABLES DE RED
+##############################################
 
 variable "vpc_cidr" {
-  type = string
+  description = "Bloque CIDR para la VPC"
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
-variable "private_subnet" {
-  type = string
+variable "vpc_az_1a" {
+  description = "Zona de disponibilidad para la primera subnet"
+  type        = string
+  default     = "us-east-1a"
 }
 
-variable "private_subnet-2" {
-  type = string
+variable "vpc_az_1b" {
+  description = "Zona de disponibilidad para la segunda subnet"
+  type        = string
+  default     = "us-east-1b"
 }
 
-variable "vpc_aws_az" {
-  default = "us-east-1a"
+variable "subnet_1a" {
+  description = "CIDR block de la subnet pública 1A"
+  type        = string
+  default     = "10.0.1.0/24"
 }
 
-variable "vpc_aws_az-2" {
-  default = "us-east-1b"
-}
-output "ec2-id" {
-  value = aws_instance.ac1-instance.id
-}
-
-output "ec2-dns" {
-  value = aws_instance.ac1-instance.public_dns
-}
-
-output "ec2-public-ip" {
-  value = aws_instance.ac1-instance.public_ip
-}
-
-output "lb-ip" {
-  value = aws_lb.ac1-lb.dns_name
-}
-variable "ami" {
-  type = string 
-}
-
-variable "region" {
-  type = string 
+variable "subnet_1b" {
+  description = "CIDR block de la subnet pública 1B"
+  type        = string
+  default     = "10.0.2.0/24"
 }
