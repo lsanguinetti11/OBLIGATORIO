@@ -1,43 +1,57 @@
+variable "project"     {
+   type = string
+   default = "ecommerce-php"
+    }
+variable "aws_region"  {
+   type = string
+    default = "us-east-1"
+    }
 
+# VPC
 
 variable "vpc_cidr" {
-  type = string
-}
+   type = string
+    default = "10.0.0.0/16"
+    }
+variable "vpc_az_1a" {
+   type = string
+    default = "us-east-1a" 
+   }
+variable "vpc_az_1b" {
+   type = string
+    default = "us-east-1b"
+    }
 
-variable "private_subnet" {
-  type = string
-}
-
-variable "private_subnet-2" {
-  type = string
-}
-
-variable "vpc_aws_az" {
-  default = "us-east-1a"
-}
-
-variable "vpc_aws_az-2" {
-  default = "us-east-1b"
-}
-output "ec2-id" {
-  value = aws_instance.ac1-instance.id
-}
-
-output "ec2-dns" {
-  value = aws_instance.ac1-instance.public_dns
-}
-
-output "ec2-public-ip" {
-  value = aws_instance.ac1-instance.public_ip
-}
-
-output "lb-ip" {
-  value = aws_lb.ac1-lb.dns_name
-}
-variable "ami" {
+variable "subnet_public_1a"  {
+   type = string
+    default = "10.0.1.0/24" 
+   }
+variable "subnet_public_1b"  { 
   type = string 
-}
+  default = "10.0.2.0/24"
+   }
+variable "subnet_private_1a" {
+   type = string
 
-variable "region" {
-  type = string 
-}
+    default = "10.0.3.0/24" 
+   }
+variable "subnet_private_1b" {
+   type = string
+   default = "10.0.4.0/24" 
+   }
+
+# EC2
+variable "ami"               {
+   type = string
+   default = "ami-0cae6d6fe6048ca2c" 
+   }
+variable "instance_type"     {
+   type = string
+   default = "t2.micro" 
+   }
+variable "ssh_allowed_cidr"  {
+   type = string 
+   default = "0.0.0.0/0" 
+   }
+
+
