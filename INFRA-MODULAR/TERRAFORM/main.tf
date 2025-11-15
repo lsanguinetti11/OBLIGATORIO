@@ -20,4 +20,11 @@ module "vpc" {
   subnet_private_1a = var.subnet_private_1a
   subnet_private_1b = var.subnet_private_1b
 }
-
+module "rds" {
+  source          = "./modules/rds"
+  project         = var.project
+  vpc_id          = module.vpc.vpc_id
+  private_subnets = module.vpc.private_subnets
+  db_username     = var.db_username
+  db_password     = var.db_password
+}
