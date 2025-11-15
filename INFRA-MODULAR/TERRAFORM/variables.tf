@@ -54,4 +54,10 @@ variable "ssh_allowed_cidr"  {
    default = "0.0.0.0/0" 
    }
 
-
+#DB
+variable db_username {
+   type = string
+}
+variable db_password {
+   type = string
+}
