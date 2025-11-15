@@ -28,7 +28,7 @@ resource "aws_security_group" "rds" {
 resource "aws_db_instance" "mysql" {
   identifier = "${var.project}-db"
   engine = "mysql"
-  engine_version = "8.0"
+  engine_version = "5.7"
   instance_class = "db.t3.micro"
   name = "ecom"
   username = var.db_username
