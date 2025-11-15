@@ -32,3 +32,7 @@ variable "project" {
   type        = string
   default     = "ecommerce-php"
 }
+variable "public_subnets" {
+  description = "Subnets publicas para las instancias"
+  type        = string
+}

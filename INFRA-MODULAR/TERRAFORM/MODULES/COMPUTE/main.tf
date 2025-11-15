@@ -6,12 +6,7 @@ resource "aws_instance" "app" {
   ami           = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
-
-  # Usa las subnets del módulo VPC (pasadas desde el root module)
-  subnet_id     = var.subnet_ids[count.index]
-
-  
-
+  subnet_id     = element(var.public_subnets, count.index)
   tags = {
     Name    = "${var.project}-app-${count.index + 1}"
     Project = var.project
