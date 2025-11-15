@@ -9,6 +9,11 @@ variable "aws_region"  {
 
 # VPC
 
+variable "key_name" {
+  type = string
+  default = "vockey"
+}
+
 variable "vpc_cidr" {
    type = string
     default = "10.0.0.0/16"
@@ -52,6 +57,10 @@ variable "instance_type"     {
 variable "ssh_allowed_cidr"  {
    type = string 
    default = "0.0.0.0/0" 
+   }
+   variable "app_instance_count" {
+     type = string
+     default = "2"
    }
 
 #DB
