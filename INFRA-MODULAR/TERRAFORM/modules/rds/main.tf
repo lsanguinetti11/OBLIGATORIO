@@ -30,7 +30,6 @@ resource "aws_db_instance" "mysql" {
   engine = "mysql"
   engine_version = "5.7"
   instance_class = "db.t3.micro"
-  name = "ecom"
   username = var.db_username
   password = var.db_password
   allocated_storage = var.db_storage
@@ -43,5 +42,3 @@ resource "aws_db_instance" "mysql" {
   tags = { Name = "${var.project}-rds" }
 }
  
-output "db_endpoint" { value = aws_db_instance.mysql.address }
-output "db_instance_arn" { value = aws_db_instance.mysql.arn }
