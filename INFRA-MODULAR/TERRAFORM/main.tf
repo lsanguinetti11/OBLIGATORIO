@@ -33,3 +33,9 @@ module "rds" {
   db_username     = var.db_username
   db_password     = var.db_password
 }
+
+module "backup" {
+  source       = "./modules/backup"
+  project      = var.project
+  rds_arn      = module.rds.db_instance_arn
+}

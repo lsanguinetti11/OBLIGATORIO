@@ -60,3 +60,4 @@ output "db_security_group_id" {
   description = "ID del Security Group del RDS"
   value       = aws_security_group.rds.id
 }
+
