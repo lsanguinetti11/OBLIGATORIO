@@ -61,7 +61,7 @@ resource "aws_security_group" "ec2_sg" {
 
 resource "aws_lb" "alb" {
   name               = "${var.project}-alb"
-  = false
+  internal = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = var.public_subnets
