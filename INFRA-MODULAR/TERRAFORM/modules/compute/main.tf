@@ -111,7 +111,7 @@ resource "aws_launch_template" "lt" {
   }
 
   user_data = base64encode(
-    templatefile("${path.module}/user_data.sh.tpl", {
+    templatefile("${path.module}/user_data.sh", {
       ecr_repo_url = var.ecr_repo_url
       aws_region   = var.aws_region
     })
