@@ -1,3 +1,8 @@
+# Obtener el rol LabRole de AWS Academy
+data "aws_iam_role" "labrole" {
+  name = "LabRole"
+}
+
 # Vault para almacenar backups
 resource "aws_backup_vault" "rds_backup_vault" {
   name = "${var.project}-rds-backup-vault"
