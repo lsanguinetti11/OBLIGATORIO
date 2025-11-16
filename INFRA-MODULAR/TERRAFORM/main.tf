@@ -44,3 +44,7 @@ module "backup" {
   project      = var.project
   rds_arn      = module.rds.db_instance_arn
 }
+module "ecr" {
+  source  = "./modules/ecr"
+  project = var.project
+}
