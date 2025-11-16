@@ -1,3 +1,6 @@
+
+
+
 module "compute" {
   source             = "./modules/compute"
   vpc_id             = module.vpc.vpc_id
@@ -6,7 +9,9 @@ module "compute" {
   instance_type      = var.instance_type
   app_instance_count = var.app_instance_count
   # aca pasas las SUBNET IDS públicas que exporta el módulo vpc
-  subnet_ids         = module.vpc.public_subnets
+  subnet_ids         = module.vpc.public_subnets #configurar sg de ec2
+  public_subnets = module.vpc.public_subnets  #Requiere el alb y asg
+  ssh_allowed_cidr   = var.ssh_allowed_cidr
   ecr_repo_url = module.ecr.repository_url
   project            = var.project
 }
