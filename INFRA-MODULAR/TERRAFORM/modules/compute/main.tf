@@ -30,7 +30,7 @@ resource "aws_security_group" "ec2_sg" {
   vpc_id = var.vpc_id
 
   ingress {
-    description      = "Allow ALB → EC2 HTTP"
+    description      = "Allow ALB to EC2 HTTP"
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
