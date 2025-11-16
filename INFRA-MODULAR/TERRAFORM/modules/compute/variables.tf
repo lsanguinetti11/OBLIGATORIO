@@ -34,3 +34,11 @@ variable "vpc_id" {
   description = "VPC para el SG de las instancias"
   type        = string
 }
+variable "ecr_repo_url" {
+  description = "id del ecr (module.ecr.repository_url)"
+  type = stringq
+}
+variable "aws_region" {
+  type = string
+  default = "us-east-1"
+}
