@@ -48,10 +48,7 @@ variable "app_instance_count" {
   default     = 2
 }
 
-variable "ecr_repo_url" {
-  description = "URL del repositorio ECR (module.ecr.repository_url)"
-  type        = string
-}
+
 
 variable "aws_region" {
   description = "Región AWS"

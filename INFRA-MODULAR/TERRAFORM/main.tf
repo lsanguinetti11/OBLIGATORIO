@@ -12,7 +12,6 @@ module "compute" {
   subnet_ids         = module.vpc.public_subnets #configurar sg de ec2
   public_subnets = module.vpc.public_subnets  #Requiere el alb y asg
   ssh_allowed_cidr   = var.ssh_allowed_cidr
-  ecr_repo_url = module.ecr.repository_url
   project            = var.project
   aws_region      = var.aws_region
 }
@@ -45,13 +44,13 @@ module "backup" {
   project      = var.project
   rds_arn      = module.rds.db_instance_arn
 }
-module "ecr" {
-  source  = "./modules/ecr"
-  project = var.project
-}
+# module "ecr" {
+#   source  = "./modules/ecr"
+#   project = var.project
+# }
 
-module "monitoring" {
-  source        = "./modules/monitoring"
-  project       = var.project
-  db_identifier = module.rds.db_identifier
-}
+# module "monitoring" {
+#   source        = "./modules/monitoring"
+#   project       = var.project
+#  # db_identifier = module.rds.db_identifier
+# }

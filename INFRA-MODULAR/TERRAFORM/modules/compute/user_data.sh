@@ -11,8 +11,12 @@ if ! command -v aws >/dev/null 2>&1; then
   yum install -y awscli
 fi
 
-git poll repo
-docker build
-docker run 
+
+git pull https://github.com/lsanguinetti11/OBLIGATORIO.git /home/ec2-user/obligatorio
+git pull https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 /home/ec2-user/obligatorio/html
+cd /home/ec2-user/obligatorio
+docker build -t obligatorio .
+docker run -d -p 8080:80 --name obligatorio obligatorio
+
 
 #BORRAR ECR
