@@ -1,6 +1,8 @@
 
 # CLOUDWATCH MONITORING PARA RDS
-
+resource "aws_sns_topic" "alerts" {
+  name = "${var.project}-alerts"
+}
 
 # Alarma: CPU alta en RDS
 resource "aws_cloudwatch_metric_alarm" "rds_cpu_high" {
@@ -17,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_high" {
     DBInstanceIdentifier = var.db_identifier
   }
   actions_enabled = true
-  alarm_actions   = [var.sns_topic_arn] # Notificación vía SNS
+  alarm_actions   = [aws_sns_topic.alerts.arn] # Notificación vía SNS
 }
 
 # Alarma: Espacio libre bajo
@@ -35,7 +37,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_storage_low" {
     DBInstanceIdentifier = var.db_identifier
   }
   actions_enabled = true
-  alarm_actions   = [var.sns_topic_arn]
+  alarm_actions   = [aws_sns_topic.alerts.arn]
 }
 
 # Alarma: Conexiones altas
@@ -53,5 +55,5 @@ resource "aws_cloudwatch_metric_alarm" "rds_connections_high" {
     DBInstanceIdentifier = var.db_identifier
   }
   actions_enabled = true
-  alarm_actions   = [var.sns_topic_arn]
+  alarm_actions   = [aws_sns_topic.alerts.arn]
 }

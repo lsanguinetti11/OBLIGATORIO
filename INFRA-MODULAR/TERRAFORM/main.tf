@@ -14,6 +14,7 @@ module "compute" {
   ssh_allowed_cidr   = var.ssh_allowed_cidr
   ecr_repo_url = module.ecr.repository_url
   project            = var.project
+  aws_region      = var.aws_region
 }
 
 # VPC
@@ -47,4 +48,10 @@ module "backup" {
 module "ecr" {
   source  = "./modules/ecr"
   project = var.project
+}
+
+module "monitoring" {
+  source        = "./modules/monitoring"
+  project       = var.project
+  db_identifier = module.rds.db_identifier
 }

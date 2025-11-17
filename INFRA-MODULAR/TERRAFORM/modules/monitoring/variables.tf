@@ -9,9 +9,10 @@ variable "db_identifier" {
   type        = string
 }
 
-variable "sns_topic_arn" {
-  description = "ARN del SNS Topic para notificaciones"
-  type        = string
+
+
+output "sns_topic_arn" {
+  value = aws_sns_topic.alerts.arn
 }
 
 output "rds_cpu_alarm" {
