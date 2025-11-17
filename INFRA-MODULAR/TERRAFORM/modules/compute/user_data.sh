@@ -11,10 +11,8 @@ if ! command -v aws >/dev/null 2>&1; then
   yum install -y awscli
 fi
 
-# Login to ECR
-aws ecr get-login-password --region ${aws_region} \
-  | docker login --username AWS --password-stdin ${ecr_repo_url}
+git poll repo
+docker build
+docker run 
 
-# Pull and run container
-docker pull ${ecr_repo_url}:latest
-docker run -d -p 80:80 --name app ${ecr_repo_url}:latest
+#BORRAR ECR
