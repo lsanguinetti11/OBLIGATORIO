@@ -13,8 +13,12 @@ if ! command -v aws >/dev/null 2>&1; then
 fi
 
 echo $(pwd)
-git clone https://github.com/Joaquin1899/obligatorio-test /home/ec2-user/obligatorio
-git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 /home/ec2-user/obligatorio/html
+mkdir -p /home/ec2-user/obligatorio/
+cd /home/ec2-user/obligatorio/
+git clone https://github.com/Joaquin1899/obligatorio-test 
+mkdir -p /home/ec2-user/obligatorio/html
+cd /home/ec2-user/obligatorio/html
+git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 
 
 cd /home/ec2-user/obligatorio
 docker build -t obligatorio .
