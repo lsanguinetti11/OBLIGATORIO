@@ -20,7 +20,7 @@ mkdir -p /home/ec2-user/obligatorio/html
 cd /home/ec2-user/obligatorio/html
 git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 
 
-cd /home/ec2-user/obligatorio
+cd e-commerce-obligatorio-2025
 docker build -t obligatorio .
 docker run -d -p 8080:80 --name obligatorio obligatorio
 
