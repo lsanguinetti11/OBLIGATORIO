@@ -13,7 +13,7 @@ if ! command -v aws >/dev/null 2>&1; then
 fi
 
 
-git pull https://github.com/lsanguinetti11/OBLIGATORIO.git /home/ec2-user/obligatorio
+git pull https://github.com/Joaquin1899/obligatorio-test /home/ec2-user/obligatorio
 git pull https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 /home/ec2-user/obligatorio/html
 cd /home/ec2-user/obligatorio
 docker build -t obligatorio .
