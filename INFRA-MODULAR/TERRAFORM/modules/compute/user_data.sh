@@ -1,28 +1,34 @@
+
 #!/bin/bash
 set -e
 
 yum update -y
-yum install  git -y 
-yum install docker -y 
+yum install git -y
+yum install docker -y
 systemctl start docker
 systemctl enable docker
 
-# Install AWS CLI if missing
 if ! command -v aws >/dev/null 2>&1; then
   yum install -y awscli
 fi
 
-echo $(pwd)
-mkdir -p /home/ec2-user/obligatorio/
-cd /home/ec2-user/obligatorio/
-git clone https://github.com/Joaquin1899/obligatorio-test 
-mkdir -p /home/ec2-user/obligatorio/html
-cd /home/ec2-user/obligatorio/html
-git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025 
+mkdir -p /home/ec2-user/app
+cd /home/ec2-user/app
 
-cd e-commerce-obligatorio-2025
+# Clonas tu repo (el que sí tiene Dockerfile)
+git clone https://github.com/Joaquin1899/OBLIGATORIO
+
+# Clonas el repo del profe
+git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025
+
+# Copias el código del profe dentro del contexto del Dockerfile
+cp -R ./e-commerce-obligatorio-2025/* ./OBLIGATORIO/
+
+# Moverte a la carpeta donde está el Dockerfile
+cd OBLIGATORIO
+
+# Construir imagen
 docker build -t obligatorio .
-docker run -d -p 8080:80 --name obligatorio obligatorio
 
-
-#BORRAR ECR
+# Ejecutar contenedor
+docker run -d -p 80:80 --name obligatorio obligatorio
