@@ -16,7 +16,7 @@ mkdir -p /home/ec2-user/app
 cd /home/ec2-user/app
 
 # Clonas tu repo (el que sí tiene Dockerfile)
-git clone https://github.com/Joaquin1899/OBLIGATORIO
+git clone https://github.com/lsanguinetti11/OBLIGATORIO.git
 
 # Clonas el repo del profe
 git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-2025
