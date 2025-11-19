@@ -35,6 +35,7 @@ variable "db_name" {
   type        = string
 }
 
+
 variable "db_username" {
   description = "Usuario administrador de la base de datos"
   type        = string

@@ -1,6 +1,3 @@
-
-
-
 module "compute" {
   source             = "./modules/compute"
   vpc_id             = module.vpc.vpc_id
@@ -17,6 +14,7 @@ module "compute" {
   db_endpoint      = module.rds.db_endpoint
   db_username      = var.db_username
   db_password      = var.db_password
+  db_name = var.db_name
 }
 
 # VPC

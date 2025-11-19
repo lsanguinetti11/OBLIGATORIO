@@ -113,7 +113,7 @@ resource "aws_launch_template" "lt" {
   user_data = base64encode(
   templatefile("${path.module}/user_data.sh", {
     db_endpoint  = var.db_endpoint
-    db_name  = var.db_name  
+    db_name  =     var.db_name  
     db_username  = var.db_username
     db_password  = var.db_password
     aws_region   = var.aws_region
