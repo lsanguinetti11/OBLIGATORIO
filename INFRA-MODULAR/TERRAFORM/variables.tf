@@ -66,6 +66,7 @@ variable "app_instance_count" {
 #DB
 variable "db_username" {
   type = string
+  default = "ecom"
 }
 variable "db_password" {
   type = string
