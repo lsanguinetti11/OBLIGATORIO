@@ -66,11 +66,11 @@ variable "app_instance_count" {
 #DB
 variable "db_username" {
   type = string
-  default = "ecom"
 }
 variable "db_password" {
   type = string
 }
 variable "db_name" {
-  type = string
+  type        = string
+  description = "Nombre de la base de datos a crear en RDS"
 }

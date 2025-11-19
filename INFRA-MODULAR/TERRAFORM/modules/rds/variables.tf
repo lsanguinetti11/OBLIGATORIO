@@ -33,7 +33,6 @@ variable "db_storage" {
 variable "db_name" {
   description = "Nombre de la base de datos"
   type        = string
-  default     = "ecom"
 }
 
 variable "db_username" {
