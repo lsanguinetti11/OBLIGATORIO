@@ -56,6 +56,10 @@ variable "db_username" {
 variable "db_password" {
    type = string 
    }
+variable "db_name" {
+  type        = string
+  description = "Nombre de la base de datos inicial ejemo ecom"
+}
 
 variable "aws_region" {
   description = "Región AWS"
