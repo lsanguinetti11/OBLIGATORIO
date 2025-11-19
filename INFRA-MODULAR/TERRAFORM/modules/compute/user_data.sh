@@ -38,7 +38,9 @@ try {
 }
 EOF
 
-mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" "${db_name}" < OBLIGATORIO/db-settings.sql
+if ! mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" "${db_name}" -e "SHOW TABLES LIKE 'about';" | grep -q about; then
+    mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" "${db_name}" < OBLIGATORIO/db-settings.sql
+fi
 # Moverte a la carpeta donde está el Dockerfile
 cd OBLIGATORIO
 
