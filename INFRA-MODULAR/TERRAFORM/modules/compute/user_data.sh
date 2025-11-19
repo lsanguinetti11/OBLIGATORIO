@@ -6,6 +6,7 @@ yum install git -y
 yum install docker -y
 systemctl start docker
 systemctl enable docker
+sudo dnf install mariadb105 -y
 
 if ! command -v aws >/dev/null 2>&1; then
   yum install -y awscli
@@ -37,6 +38,7 @@ try {
 }
 EOF
 
+mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" < OBLIGATORIO/db-settings.sql
 # Moverte a la carpeta donde está el Dockerfile
 cd OBLIGATORIO
 
