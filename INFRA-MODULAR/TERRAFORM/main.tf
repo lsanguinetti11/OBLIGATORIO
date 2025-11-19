@@ -14,7 +14,7 @@ module "compute" {
   db_endpoint      = module.rds.db_endpoint
   db_username      = var.db_username
   db_password      = var.db_password
-  db_name = var.db_name
+  db_name          = var.db_name
 }
 
 # VPC
@@ -36,9 +36,9 @@ module "rds" {
   vpc_cidr        = var.vpc_cidr
   vpc_id          = module.vpc.vpc_id
   private_subnets = module.vpc.private_subnets
-  db_username     = var.db_username    # usuario
-  db_password     = var.db_password    # contraseña
-  db_name         = var.db_name        # nombre de la base de datos
+  db_username     = var.db_username # usuario
+  db_password     = var.db_password # contraseña
+  db_name         = var.db_name     # nombre de la base de datos
 }
 
 

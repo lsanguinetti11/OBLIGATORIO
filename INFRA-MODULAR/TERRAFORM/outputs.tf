@@ -15,11 +15,11 @@ output "db_security_group_id" {
 output "alb_dns" {
   value = module.alb.dns_name
 }
- 
+
 output "asg_name" {
   value = module.asg.name
 }
- 
+
 output "alb_sg_id" {
   value = module.alb_sg.id
 }
