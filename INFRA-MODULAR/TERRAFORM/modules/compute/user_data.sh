@@ -38,7 +38,7 @@ try {
 }
 EOF
 
-mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" < OBLIGATORIO/db-settings.sql
+mysql -h "${db_endpoint}" -u "${db_username}" -p"${db_password}" "${db_name}" < OBLIGATORIO/db-settings.sql
 # Moverte a la carpeta donde está el Dockerfile
 cd OBLIGATORIO
 
