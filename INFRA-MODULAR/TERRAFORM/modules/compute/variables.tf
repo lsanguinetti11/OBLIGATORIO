@@ -47,8 +47,15 @@ variable "app_instance_count" {
   type        = number
   default     = 2
 }
-
-
+variable "db_endpoint" { 
+  type= string
+ }
+variable "db_username" {
+   type = string
+    }
+variable "db_password" {
+   type = string 
+   }
 
 variable "aws_region" {
   description = "Región AWS"

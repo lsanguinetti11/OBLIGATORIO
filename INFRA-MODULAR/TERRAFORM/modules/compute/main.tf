@@ -110,7 +110,15 @@ resource "aws_launch_template" "lt" {
     security_groups = [aws_security_group.ec2_sg.id]
   }
 
-  user_data = base64encode(file("${path.module}/user_data.sh"))
+  user_data = base64encode(
+  templatefile("${path.module}/user_data.sh", {
+    db_endpoint  = var.db_endpoint
+    db_username  = var.db_username
+    db_password  = var.db_password
+    aws_region   = var.aws_region
+  })
+)
+
 
   tag_specifications {
     resource_type = "instance"

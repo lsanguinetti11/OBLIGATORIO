@@ -14,6 +14,9 @@ module "compute" {
   ssh_allowed_cidr   = var.ssh_allowed_cidr
   project            = var.project
   aws_region      = var.aws_region
+  db_endpoint        = module.rds.db_endpoint
+  db_username        = var.db_username
+  db_password        = var.db_password
 }
 
 # VPC

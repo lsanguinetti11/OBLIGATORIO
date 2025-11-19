@@ -7,6 +7,8 @@ RUN a2enmod rewrite
 # Configurar AllowOverride para permitir .htaccess
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
  
+RUN docker-php-ext-install pdo pdo_mysql
+
 # Copiar el código de la aplicación al DocumentRoot
 COPY . /var/www/html/
  

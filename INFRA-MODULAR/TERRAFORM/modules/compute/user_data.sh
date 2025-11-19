@@ -23,6 +23,20 @@ git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligatorio-
 # Copias el código del profe dentro del contexto del Dockerfile
 cp -R ./e-commerce-obligatorio-2025/* ./OBLIGATORIO/
 
+cat <<EOF > OBLIGATORIO/views/db.php
+<?php
+\$host = "${db_endpoint}";
+\$name = "ecom";
+\$user = "${db_username}";
+\$password = "${db_password}";
+try {
+    \$pdo = new PDO("mysql:host=\$host;dbname=\$name", \$user, \$password);
+    \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException \$exception) {
+    echo "Connection error :" . \$exception->getMessage();
+}
+EOF
+
 # Moverte a la carpeta donde está el Dockerfile
 cd OBLIGATORIO
 
