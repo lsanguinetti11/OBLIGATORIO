@@ -1,18 +1,16 @@
 # Documentación del Proyecto
 
 ## Índice
-- [Root Module
-- [Módulo:backup
-- [Módulo:compute
-- [Módulo:monitoring
-- [Módulo:rds
-- [Módulo:vpc
+- Root Module
+- Módulo:backup
+- Módulo:compute
+- Módulo:monitoring
+- Módulo:rds
+- Módulo:vpc
 
 ## Root Module
 
-
 ### Inputs
-## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -34,7 +32,6 @@
 | <a name="input_vpc_az_1b"></a> [vpc\_az\_1b](#input\_vpc\_az\_1b) | n/a | `string` | `"us-east-1b"` | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | n/a | `string` | `"10.0.0.0/16"` | no |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -49,20 +46,9 @@
 | <a name="output_db_security_group_id"></a> [db\_security\_group\_id](#output\_db\_security\_group\_id) | ID del Security Group del RDS |
 | <a name="output_ec2_sg_id"></a> [ec2\_sg\_id](#output\_ec2\_sg\_id) | n/a |
 
-### Providers
-
-
-### Resources
-## Resources
-
-No resources.
-
-### Requirements
 
 ## Módulo: backup
 
-
-### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -70,7 +56,6 @@ No resources.
 | <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | n/a | yes |
 | <a name="input_rds_arn"></a> [rds\_arn](#input\_rds\_arn) | ARN de la instancia RDS | `string` | n/a | yes |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -78,10 +63,6 @@ No resources.
 | <a name="output_backup_plan_id"></a> [backup\_plan\_id](#output\_backup\_plan\_id) | n/a |
 | <a name="output_backup_vault_name"></a> [backup\_vault\_name](#output\_backup\_vault\_name) | n/a |
 
-### Providers
-
-
-### Resources
 ## Resources
 
 | Name | Type |
@@ -91,12 +72,8 @@ No resources.
 | [aws_backup_vault.rds_backup_vault](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_vault) | resource |
 | [aws_iam_role.labrole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_role) | data source |
 
-### Requirements
-
 ## Módulo: compute
 
-
-### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -116,7 +93,6 @@ No resources.
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Lista de subnets donde se crearán las instancias EC2 | `list(string)` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID de la VPC para los recursos | `string` | n/a | yes |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -126,10 +102,7 @@ No resources.
 | <a name="output_asg_name"></a> [asg\_name](#output\_asg\_name) | n/a |
 | <a name="output_ec2_sg_id"></a> [ec2\_sg\_id](#output\_ec2\_sg\_id) | n/a |
 
-### Providers
 
-
-### Resources
 ## Resources
 
 | Name | Type |
@@ -142,12 +115,9 @@ No resources.
 | [aws_security_group.alb_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group.ec2_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
-### Requirements
 
 ## Módulo: monitoring
 
-
-### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -155,7 +125,6 @@ No resources.
 | <a name="input_db_identifier"></a> [db\_identifier](#input\_db\_identifier) | Identificador de la instancia RDS | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | n/a | yes |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -165,10 +134,7 @@ No resources.
 | <a name="output_rds_storage_alarm"></a> [rds\_storage\_alarm](#output\_rds\_storage\_alarm) | n/a |
 | <a name="output_sns_topic_arn"></a> [sns\_topic\_arn](#output\_sns\_topic\_arn) | n/a |
 
-### Providers
 
-
-### Resources
 ## Resources
 
 | Name | Type |
@@ -178,12 +144,9 @@ No resources.
 | [aws_cloudwatch_metric_alarm.rds_storage_low](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_sns_topic.alerts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
 
-### Requirements
 
 ## Módulo: rds
 
-
-### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -198,7 +161,6 @@ No resources.
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | CIDR de la VPC para permitir tráfico interno | `string` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID de la VPC donde se creará el RDS | `string` | n/a | yes |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -208,10 +170,6 @@ No resources.
 | <a name="output_db_instance_arn"></a> [db\_instance\_arn](#output\_db\_instance\_arn) | ARN de la instancia RDS |
 | <a name="output_db_security_group_id"></a> [db\_security\_group\_id](#output\_db\_security\_group\_id) | ID del Security Group del RDS |
 
-### Providers
-
-
-### Resources
 ## Resources
 
 | Name | Type |
@@ -220,12 +178,8 @@ No resources.
 | [aws_db_subnet_group.rds_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_subnet_group) | resource |
 | [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
-### Requirements
-
 ## Módulo: vpc
 
-
-### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -239,7 +193,6 @@ No resources.
 | <a name="input_vpc_az_1b"></a> [vpc\_az\_1b](#input\_vpc\_az\_1b) | Zona de disponibilidad para la segunda subnet | `string` | `"us-east-1b"` | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | Bloque CIDR principal de la VPC | `string` | `"10.0.0.0/16"` | no |
 
-### Outputs
 ## Outputs
 
 | Name | Description |
@@ -249,10 +202,7 @@ No resources.
 | <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | n/a |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
 
-### Providers
 
-
-### Resources
 ## Resources
 
 | Name | Type |
@@ -267,4 +217,3 @@ No resources.
 | [aws_subnet.public_1b](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 
-### Requirements
