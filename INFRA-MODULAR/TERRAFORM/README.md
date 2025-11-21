@@ -186,7 +186,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | `"ecommerce-php"` | no |
 | <a name="input_subnet_private_1a"></a> [subnet\_private\_1a](#input\_subnet\_private\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.3.0/24"` | no |
-| <a name="input_subnet_private_1b"></a> [subnet\_private\_1b](#input\_subnet\_private\_1b) | CIDR block de la subnet pública 1A | `string` | `"10.0.4.0/24"` | no |
+| <a name="input_subnet_private_1b"></a> [subnet\_private\_1b](#input\_subnet\_private\_1b) | CIDR block de la subnet pública 1B | `string` | `"10.0.4.0/24"` | no |
 | <a name="input_subnet_public_1a"></a> [subnet\_public\_1a](#input\_subnet\_public\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.1.0/24"` | no |
 | <a name="input_subnet_public_1b"></a> [subnet\_public\_1b](#input\_subnet\_public\_1b) | CIDR block de la subnet pública 1B | `string` | `"10.0.2.0/24"` | no |
 | <a name="input_vpc_az_1a"></a> [vpc\_az\_1a](#input\_vpc\_az\_1a) | Zona de disponibilidad para la primera subnet | `string` | `"us-east-1a"` | no |
