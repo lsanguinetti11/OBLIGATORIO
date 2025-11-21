@@ -61,3 +61,8 @@ output "db_security_group_id" {
   value       = aws_security_group.rds.id
 }
 
+
+output "db_identifier" {
+  description = "Identificador de la instancia RDS"
+  value       = aws_db_instance.mysql.id
+}

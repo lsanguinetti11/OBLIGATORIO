@@ -53,8 +53,8 @@ module "backup" {
 #   project = var.project
 # }
 
-# module "monitoring" {
-#   source        = "./modules/monitoring"
-#   project       = var.project
-#  # db_identifier = module.rds.db_identifier
-# }
+ module "monitoring" {
+   source        = "./modules/monitoring"
+   project       = var.project
+   db_identifier = module.rds.db_identifier
+ }
