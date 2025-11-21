@@ -11,7 +11,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_high" {
   evaluation_periods  = 1
   metric_name         = "CPUUtilization"
   namespace           = "AWS/RDS"
-  period              = 60
+  period              = 30
   statistic           = "Average"
   threshold           = 70
   alarm_description   = "Alarma cuando CPU > 70% en RDS"
@@ -29,7 +29,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_storage_low" {
   evaluation_periods  = 1
   metric_name         = "FreeStorageSpace"
   namespace           = "AWS/RDS"
-  period              = 60
+  period              = 30
   statistic           = "Average"
   threshold           = 2000000000 # ~2 GB
   alarm_description   = "Alarma cuando espacio libre < 2GB en RDS"
@@ -47,7 +47,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_connections_high" {
   evaluation_periods  = 1
   metric_name         = "DatabaseConnections"
   namespace           = "AWS/RDS"
-  period              = 60
+  period              =30
   statistic           = "Average"
   threshold           = 50
   alarm_description   = "Alarma cuando conexiones > 50 en RDS"
