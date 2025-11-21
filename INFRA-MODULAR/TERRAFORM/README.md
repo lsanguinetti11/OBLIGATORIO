@@ -1,29 +1,17 @@
 # Documentación del Proyecto
 
+## Índice
+- [Root Module
+- [Módulo:backup
+- [Módulo:compute
+- [Módulo:monitoring
+- [Módulo:rds
+- [Módulo:vpc
+
 ## Root Module
 
-## Requirements
 
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_backup"></a> [backup](#module\_backup) | ./modules/backup | n/a |
-| <a name="module_compute"></a> [compute](#module\_compute) | ./modules/compute | n/a |
-| <a name="module_monitoring"></a> [monitoring](#module\_monitoring) | ./modules/monitoring | n/a |
-| <a name="module_rds"></a> [rds](#module\_rds) | ./modules/rds | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ./modules/vpc | n/a |
-
-## Resources
-
-No resources.
-
+### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -46,6 +34,7 @@ No resources.
 | <a name="input_vpc_az_1b"></a> [vpc\_az\_1b](#input\_vpc\_az\_1b) | n/a | `string` | `"us-east-1b"` | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | n/a | `string` | `"10.0.0.0/16"` | no |
 
+### Outputs
 ## Outputs
 
 | Name | Description |
@@ -60,22 +49,39 @@ No resources.
 | <a name="output_db_security_group_id"></a> [db\_security\_group\_id](#output\_db\_security\_group\_id) | ID del Security Group del RDS |
 | <a name="output_ec2_sg_id"></a> [ec2\_sg\_id](#output\_ec2\_sg\_id) | n/a |
 
+### Providers
+
+
+### Resources
+## Resources
+
+No resources.
+
+### Requirements
+
 ## Módulo: backup
 
-## Requirements
 
-No requirements.
+### Inputs
+## Inputs
 
-## Providers
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | n/a | yes |
+| <a name="input_rds_arn"></a> [rds\_arn](#input\_rds\_arn) | ARN de la instancia RDS | `string` | n/a | yes |
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+### Outputs
+## Outputs
 
-## Modules
+| Name | Description |
+|------|-------------|
+| <a name="output_backup_plan_id"></a> [backup\_plan\_id](#output\_backup\_plan\_id) | n/a |
+| <a name="output_backup_vault_name"></a> [backup\_vault\_name](#output\_backup\_vault\_name) | n/a |
 
-No modules.
+### Providers
 
+
+### Resources
 ## Resources
 
 | Name | Type |
@@ -85,48 +91,12 @@ No modules.
 | [aws_backup_vault.rds_backup_vault](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_vault) | resource |
 | [aws_iam_role.labrole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_role) | data source |
 
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | n/a | yes |
-| <a name="input_rds_arn"></a> [rds\_arn](#input\_rds\_arn) | ARN de la instancia RDS | `string` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_backup_plan_id"></a> [backup\_plan\_id](#output\_backup\_plan\_id) | n/a |
-| <a name="output_backup_vault_name"></a> [backup\_vault\_name](#output\_backup\_vault\_name) | n/a |
+### Requirements
 
 ## Módulo: compute
 
-## Requirements
 
-No requirements.
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-
-## Modules
-
-No modules.
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [aws_autoscaling_group.asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
-| [aws_launch_template.lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
-| [aws_lb.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
-| [aws_lb_listener.listener_http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
-| [aws_lb_target_group.tg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group) | resource |
-| [aws_security_group.alb_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group.ec2_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-
+### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -146,6 +116,7 @@ No modules.
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Lista de subnets donde se crearán las instancias EC2 | `list(string)` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID de la VPC para los recursos | `string` | n/a | yes |
 
+### Outputs
 ## Outputs
 
 | Name | Description |
@@ -155,31 +126,28 @@ No modules.
 | <a name="output_asg_name"></a> [asg\_name](#output\_asg\_name) | n/a |
 | <a name="output_ec2_sg_id"></a> [ec2\_sg\_id](#output\_ec2\_sg\_id) | n/a |
 
-## Módulo: monitoring
+### Providers
 
-## Requirements
 
-No requirements.
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-
-## Modules
-
-No modules.
-
+### Resources
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_cloudwatch_metric_alarm.rds_connections_high](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_cloudwatch_metric_alarm.rds_cpu_high](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_cloudwatch_metric_alarm.rds_storage_low](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_sns_topic.alerts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_autoscaling_group.asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws_launch_template.lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws_lb.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
+| [aws_lb_listener.listener_http](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.tg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group) | resource |
+| [aws_security_group.alb_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group.ec2_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
+### Requirements
+
+## Módulo: monitoring
+
+
+### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -187,6 +155,7 @@ No modules.
 | <a name="input_db_identifier"></a> [db\_identifier](#input\_db\_identifier) | Identificador de la instancia RDS | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | n/a | yes |
 
+### Outputs
 ## Outputs
 
 | Name | Description |
@@ -196,30 +165,25 @@ No modules.
 | <a name="output_rds_storage_alarm"></a> [rds\_storage\_alarm](#output\_rds\_storage\_alarm) | n/a |
 | <a name="output_sns_topic_arn"></a> [sns\_topic\_arn](#output\_sns\_topic\_arn) | n/a |
 
-## Módulo: rds
+### Providers
 
-## Requirements
 
-No requirements.
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-
-## Modules
-
-No modules.
-
+### Resources
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_db_instance.mysql](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance) | resource |
-| [aws_db_subnet_group.rds_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_subnet_group) | resource |
-| [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_cloudwatch_metric_alarm.rds_connections_high](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.rds_cpu_high](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.rds_storage_low](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_sns_topic.alerts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
 
+### Requirements
+
+## Módulo: rds
+
+
+### Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -234,6 +198,7 @@ No modules.
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | CIDR de la VPC para permitir tráfico interno | `string` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID de la VPC donde se creará el RDS | `string` | n/a | yes |
 
+### Outputs
 ## Outputs
 
 | Name | Description |
@@ -243,22 +208,51 @@ No modules.
 | <a name="output_db_instance_arn"></a> [db\_instance\_arn](#output\_db\_instance\_arn) | ARN de la instancia RDS |
 | <a name="output_db_security_group_id"></a> [db\_security\_group\_id](#output\_db\_security\_group\_id) | ID del Security Group del RDS |
 
+### Providers
+
+
+### Resources
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_db_instance.mysql](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance) | resource |
+| [aws_db_subnet_group.rds_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_subnet_group) | resource |
+| [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+
+### Requirements
+
 ## Módulo: vpc
 
-## Requirements
 
-No requirements.
+### Inputs
+## Inputs
 
-## Providers
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | `"ecommerce-php"` | no |
+| <a name="input_subnet_private_1a"></a> [subnet\_private\_1a](#input\_subnet\_private\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.3.0/24"` | no |
+| <a name="input_subnet_private_1b"></a> [subnet\_private\_1b](#input\_subnet\_private\_1b) | CIDR block de la subnet pública 1A | `string` | `"10.0.4.0/24"` | no |
+| <a name="input_subnet_public_1a"></a> [subnet\_public\_1a](#input\_subnet\_public\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.1.0/24"` | no |
+| <a name="input_subnet_public_1b"></a> [subnet\_public\_1b](#input\_subnet\_public\_1b) | CIDR block de la subnet pública 1B | `string` | `"10.0.2.0/24"` | no |
+| <a name="input_vpc_az_1a"></a> [vpc\_az\_1a](#input\_vpc\_az\_1a) | Zona de disponibilidad para la primera subnet | `string` | `"us-east-1a"` | no |
+| <a name="input_vpc_az_1b"></a> [vpc\_az\_1b](#input\_vpc\_az\_1b) | Zona de disponibilidad para la segunda subnet | `string` | `"us-east-1b"` | no |
+| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | Bloque CIDR principal de la VPC | `string` | `"10.0.0.0/16"` | no |
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+### Outputs
+## Outputs
 
-## Modules
+| Name | Description |
+|------|-------------|
+| <a name="output_internet_gateway_id"></a> [internet\_gateway\_id](#output\_internet\_gateway\_id) | n/a |
+| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | n/a |
+| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | n/a |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
 
-No modules.
+### Providers
 
+
+### Resources
 ## Resources
 
 | Name | Type |
@@ -273,24 +267,4 @@ No modules.
 | [aws_subnet.public_1b](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_project"></a> [project](#input\_project) | Nombre base para los recursos | `string` | `"ecommerce-php"` | no |
-| <a name="input_subnet_private_1a"></a> [subnet\_private\_1a](#input\_subnet\_private\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.3.0/24"` | no |
-| <a name="input_subnet_private_1b"></a> [subnet\_private\_1b](#input\_subnet\_private\_1b) | CIDR block de la subnet pública 1A | `string` | `"10.0.4.0/24"` | no |
-| <a name="input_subnet_public_1a"></a> [subnet\_public\_1a](#input\_subnet\_public\_1a) | CIDR block de la subnet pública 1A | `string` | `"10.0.1.0/24"` | no |
-| <a name="input_subnet_public_1b"></a> [subnet\_public\_1b](#input\_subnet\_public\_1b) | CIDR block de la subnet pública 1B | `string` | `"10.0.2.0/24"` | no |
-| <a name="input_vpc_az_1a"></a> [vpc\_az\_1a](#input\_vpc\_az\_1a) | Zona de disponibilidad para la primera subnet | `string` | `"us-east-1a"` | no |
-| <a name="input_vpc_az_1b"></a> [vpc\_az\_1b](#input\_vpc\_az\_1b) | Zona de disponibilidad para la segunda subnet | `string` | `"us-east-1b"` | no |
-| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | Bloque CIDR principal de la VPC | `string` | `"10.0.0.0/16"` | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_internet_gateway_id"></a> [internet\_gateway\_id](#output\_internet\_gateway\_id) | n/a |
-| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | n/a |
-| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | n/a |
-| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
+### Requirements
