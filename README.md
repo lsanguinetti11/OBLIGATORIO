@@ -84,6 +84,10 @@ terraform plan
 Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 terraform apply
 
+Diagrama de infraestructura
+
+
+
 # Descripción de los Componentes 
 
 ## Índice
