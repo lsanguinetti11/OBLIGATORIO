@@ -1,5 +1,88 @@
+Guía de Usuario
+
+Bienvenido a la guía de despliegue del obligatorio.
+Este proyecto realiza un despliegue completo de infraestructura en AWS usando Terraform, ejecuta la aplicación del obligatorio dentro de un contenedor Docker, gestiona la base de datos en Amazon RDS, centraliza la seguridad mediante Security Groups, y realiza backups automáticos con AWS Backup.
+Además, la solución escala automáticamente bajo demanda gracias al AutoScaling Group (ASG) y mantiene alta disponibilidad.
+
+Descripción General
+
+Este proyecto despliega una infraestructura completa, modular y automatizada en AWS utilizando Terraform.
+La solución replica y mejora la arquitectura on-premise de un e-commerce, incorporando:
+
+Balanceo de carga (ALB)
+Escalado automático (ASG)
+Servidores de aplicación en contenedores Docker
+Base de datos MySQL en RDS
+Subredes públicas y privadas
+Seguridad basada en Security Groups
+Backups automáticos mediante AWS Backup
+Alta disponibilidad y tolerancia a fallos
+Logs distribuidos y monitoreo (CloudWatch)
+La aplicación se ejecuta dentro de un Auto Scaling Group, y cada instancia aplica un pipeline automático (definido en user_data.sh) que:
+Instala dependencias
+Clona tu repositorio
+Clona el repo base del profesor
+Construye la imagen Docker
+Levanta la aplicación automáticamente
+Esto asegura que cada EC2 que se crea por el ASG ya tenga la aplicación funcionando sin intervención manual.
 
 
+Requisitos
+
+Tener instalado Terraform
+Tener instaldo AWS Cli
+Haber modificado las credenciales AWS en la maquina local
+Repositorio en Github
+
+INSTALACIÓN 
+
+1. Instalar Terraform
+Permite automatizar toda la infraestructura del obligatorio.
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo dnf install -y terraform
+
+2. Instalar AWS CLI
+Se utiliza para configurar las credenciales y permitir que Terraform hable con AWS.
+wget "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+unzip awscli-exe-linux-x86_64.zip
+sudo ./aws/install
+
+3. Configurar credenciales AWS
+Necesario para que Terraform pueda crear recursos en AWS.
+aws configure
+
+4. Instalar Git
+Permite clonar el repositorio del obligatorio y trabajar con control de versiones.
+sudo dnf install -y git
+
+5. Instalar Docker
+Requerido para construir y ejecutar la aplicación dentro de contenedores (igual que hace el user_data en EC2).
+sudo dnf install -y docker
+sudo systemctl enable --now docker
+
+6. Clonar este repositorio
+Descarga el código del proyecto en tu máquina local.
+git clone https://github.com/lsanguinetti11/OBLIGATORIO.git
+
+7. Entrar al directorio del proyecto
+Ubicación donde están los módulos y el main de Terraform.
+cd OBLIGATORIO
+
+8. Inicializar Terraform
+Prepara el entorno de trabajo y descarga los providers necesarios.
+terraform init
+
+9. Validar la sintaxis del proyecto
+Asegura que la infraestructura esté correctamente definida.
+terraform validate
+
+10. Ver el plan de despliegue
+Muestra qué recursos va a crear Terraform.
+terraform plan
+
+11. Aplicar los cambios
+Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
+terraform apply
 
 # Descripción de los Componentes 
 
