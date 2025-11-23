@@ -62,31 +62,27 @@ sudo systemctl enable --now docker
 
 6. Clonar este repositorio
 Descarga el código del proyecto en tu máquina local.
-git clone https://github.com/lsanguinetti11/OBLIGATORIO.git
+**git clone https://github.com/lsanguinetti11/OBLIGATORIO.git**
 
 7. Entrar al directorio del proyecto
 Ubicación donde están los módulos y el main de Terraform.
-cd OBLIGATORIO
+**cd OBLIGATORIO/INFRA-MODULAR/TERRAFORM**
 
 8. Inicializar Terraform
 Prepara el entorno de trabajo y descarga los providers necesarios.
-terraform init
+**terraform init**
 
 9. Validar la sintaxis del proyecto
 Asegura que la infraestructura esté correctamente definida.
-terraform validate
+**terraform validate**
 
 10. Ver el plan de despliegue
 Muestra qué recursos va a crear Terraform.
-terraform plan
+**terraform plan**
 
 11. Aplicar los cambios
 Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
-terraform apply
-
-Diagrama de infraestructura
-
-
+**terraform apply -auto-approve -var-file terraform.tfvars**
 
 # Descripción de los Componentes 
 
