@@ -85,9 +85,12 @@ Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 **terraform apply -auto-approve -var-file terraform.tfvars**
 
 
+
 ## Arquitectura del Proyecto
 
-!Diagrama de Arquitectura
+![Diagrama de Arquitectura](Diagrama.jpg)
+
+
 
 # Descripción de los Componentes 
 
