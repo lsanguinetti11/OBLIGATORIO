@@ -84,6 +84,11 @@ Muestra qué recursos va a crear Terraform.
 Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 **terraform apply -auto-approve -var-file terraform.tfvars**
 
+
+## Arquitectura del Proyecto
+
+!Diagrama de Arquitectura
+
 # Descripción de los Componentes 
 
 ## Índice
