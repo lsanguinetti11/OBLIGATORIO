@@ -27,6 +27,22 @@ Levanta la aplicación automáticamente
 Esto asegura que cada EC2 que se crea por el ASG ya tenga la aplicación funcionando sin intervención manual.
 
 
+
+Gestión de estado remoto 
+Para garantizar la seguridad y consistencia del estado de Terraform:
+
+-El archivo de estado (`terraform.tfstate`) se almacena en un bucket S3 con encriptación y versionado habilitado.
+-Se utiliza DynamoDB para bloqueo (locking), evitando cambios simultáneos en la infraestructura.
+-Esto asegura alta disponibilidad y protección contra corrupción del estado.
+
+
+Repositorios
+-Repo principal: Contiene la infraestructura modular completa y la aplicación.
+-Repo secundario: Configura el backend remoto (S3 + DynamoDB) y parámetros seguros en AWS Systems Manager Parameter Store para credenciales de la base de datos.
+
+
+
+
 Requisitos
 
 Tener instalado Terraform
