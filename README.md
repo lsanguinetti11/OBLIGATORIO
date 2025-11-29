@@ -110,6 +110,7 @@ Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 
 ## Arquitectura del Proyecto
 
+
 ![Diagrama de Arquitectura](Diagrama.jpg)
 
 
