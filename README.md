@@ -1,3 +1,116 @@
+Guía de Usuario
+
+Bienvenido a la guía de despliegue del obligatorio.
+Este proyecto realiza un despliegue completo de infraestructura en AWS usando Terraform, ejecuta la aplicación del obligatorio dentro de un contenedor Docker, gestiona la base de datos en Amazon RDS, centraliza la seguridad mediante Security Groups, y realiza backups automáticos con AWS Backup.
+Además, la solución escala automáticamente bajo demanda gracias al AutoScaling Group (ASG) y mantiene alta disponibilidad.
+
+Descripción General
+
+Este proyecto despliega una infraestructura completa, modular y automatizada en AWS utilizando Terraform.
+La solución replica y mejora la arquitectura on-premise de un e-commerce, incorporando:
+
+Balanceo de carga (ALB)
+Escalado automático (ASG)
+Servidores de aplicación en contenedores Docker
+Base de datos MySQL en RDS
+Subredes públicas y privadas
+Seguridad basada en Security Groups
+Backups automáticos mediante AWS Backup
+Alta disponibilidad y tolerancia a fallos
+Logs distribuidos y monitoreo (CloudWatch)
+La aplicación se ejecuta dentro de un Auto Scaling Group, y cada instancia aplica un pipeline automático (definido en user_data.sh) que:
+Instala dependencias
+Clona tu repositorio
+Clona el repo base del profesor
+Construye la imagen Docker
+Levanta la aplicación automáticamente
+Esto asegura que cada EC2 que se crea por el ASG ya tenga la aplicación funcionando sin intervención manual.
+
+
+
+Gestión de estado remoto 
+Para garantizar la seguridad y consistencia del estado de Terraform:
+
+-El archivo de estado (`terraform.tfstate`) se almacena en un bucket S3 con encriptación y versionado habilitado.
+-Se utiliza DynamoDB para bloqueo (locking), evitando cambios simultáneos en la infraestructura.
+-Esto asegura alta disponibilidad y protección contra corrupción del estado.
+
+
+Repositorios
+-Repo principal: Contiene la infraestructura modular completa y la aplicación.
+-Repo secundario: Configura el backend remoto (S3 + DynamoDB) y parámetros seguros en AWS Systems Manager Parameter Store para credenciales de la base de datos.
+
+
+
+
+Requisitos
+
+Tener instalado Terraform
+Tener instaldo AWS Cli
+Haber modificado las credenciales AWS en la maquina local
+Repositorio en Github
+
+INSTALACIÓN en SO Centros Stream
+
+1. Instalar Terraform
+Permite automatizar toda la infraestructura del obligatorio.
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo dnf install -y terraform
+
+2. Instalar AWS CLI
+Se utiliza para configurar las credenciales y permitir que Terraform hable con AWS.
+wget "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+unzip awscli-exe-linux-x86_64.zip
+sudo ./aws/install
+
+3. Configurar credenciales AWS
+Necesario para que Terraform pueda crear recursos en AWS.
+aws configure
+
+4. Instalar Git
+Permite clonar el repositorio del obligatorio y trabajar con control de versiones.
+sudo dnf install -y git
+
+5. Configuración del backend remoto (S3 + DynamoDB)
+clonar el código  en tu máquina local.
+**git clone https://github.com/lsanguinetti11/S3-dynamoDB.git**
+**cd S3-dynamoDB**
+**terraform init**
+**terraform apply -auto-approve**
+
+6. Clonar este repositorio
+Descarga el código del Obligatorio en tu máquina local.
+**git clone https://github.com/lsanguinetti11/OBLIGATORIO.git**
+
+7. Entrar al directorio del proyecto
+Ubicación donde están los módulos y el main de Terraform.
+**cd OBLIGATORIO/INFRA-MODULAR/TERRAFORM**
+
+8. Antes de ejecutar  el obligatorio, recordá editar el
+correo donde querés recibir las notificaciones SNS dentro del archivo: **cd OBLIGATORIO/INFRA-MODULAR/TERRAFORM/notificaciones.tf**
+En correo debe ser confirmada la subscripcion desde el email que SNS envía automáticamente
+
+9. Inicializar Terraform
+Prepara el entorno de trabajo y descarga los providers necesarios.
+**terraform init**
+
+10. Validar la sintaxis del proyecto
+Asegura que la infraestructura esté correctamente definida.
+**terraform validate**
+
+11. Ver el plan de despliegue
+Muestra qué recursos va a crear Terraform.
+**terraform plan**
+
+12. Aplicar los cambios
+Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
+**terraform apply -auto-approve -var-file terraform.tfvars**
+
+
+
+## Arquitectura del Proyecto
+
+![Diagrama de Arquitectura](Diagrama.jpg)
 
 
 
