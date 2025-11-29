@@ -127,6 +127,14 @@ Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 
 ## Root Module
 
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_sns_topic.infra_notifications](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_subscription.email_subscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
+| [null_resource.notify_infra_ready](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+
 ### Inputs
 
 | Name | Description | Type | Default | Required |
