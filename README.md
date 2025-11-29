@@ -50,7 +50,7 @@ Tener instaldo AWS Cli
 Haber modificado las credenciales AWS en la maquina local
 Repositorio en Github
 
-INSTALACIÓN 
+INSTALACIÓN en SO Centros Stream
 
 1. Instalar Terraform
 Permite automatizar toda la infraestructura del obligatorio.
@@ -71,32 +71,38 @@ aws configure
 Permite clonar el repositorio del obligatorio y trabajar con control de versiones.
 sudo dnf install -y git
 
-5. Instalar Docker
-Requerido para construir y ejecutar la aplicación dentro de contenedores (igual que hace el user_data en EC2).
-sudo dnf install -y docker
-sudo systemctl enable --now docker
+5. Configuración del backend remoto (S3 + DynamoDB)
+clonar el código  en tu máquina local.
+**git clone https://github.com/lsanguinetti11/S3-dynamoDB.git**
+**cd S3-dynamoDB**
+**terraform init**
+**terraform apply -auto-approve**
 
 6. Clonar este repositorio
-Descarga el código del proyecto en tu máquina local.
+Descarga el código del Obligatorio en tu máquina local.
 **git clone https://github.com/lsanguinetti11/OBLIGATORIO.git**
 
 7. Entrar al directorio del proyecto
 Ubicación donde están los módulos y el main de Terraform.
 **cd OBLIGATORIO/INFRA-MODULAR/TERRAFORM**
 
-8. Inicializar Terraform
+8. Antes de ejecutar  el obligatorio, recordá editar el
+correo donde querés recibir las notificaciones SNS dentro del archivo: **cd OBLIGATORIO/INFRA-MODULAR/TERRAFORM/notificaciones.tf**
+En correo debe ser confirmada la subscripcion desde el email que SNS envía automáticamente
+
+9. Inicializar Terraform
 Prepara el entorno de trabajo y descarga los providers necesarios.
 **terraform init**
 
-9. Validar la sintaxis del proyecto
+10. Validar la sintaxis del proyecto
 Asegura que la infraestructura esté correctamente definida.
 **terraform validate**
 
-10. Ver el plan de despliegue
+11. Ver el plan de despliegue
 Muestra qué recursos va a crear Terraform.
 **terraform plan**
 
-11. Aplicar los cambios
+12. Aplicar los cambios
 Crea toda la infraestructura automática (VPC, RDS, ALB, ASG y EC2).
 **terraform apply -auto-approve -var-file terraform.tfvars**
 
